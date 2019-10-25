@@ -1,0 +1,24 @@
+<script>
+    //Calcul d'un prixTTC à partir du prixHTVA, du nombre d'articles et du taux de TVA
+    // Taux TVA est de 20,5%
+    
+    //Déclaration des variables (valeur undefined)
+    var prixHTVA, nbArticles, tauxTVA = 0.205, prixTTC;
+    
+    do {
+        //Lecture des variables d'entrée avec FILTRE (valeur numérique requise)
+        do
+         prixHTVA = window.prompt('Veuillez entrer le prix HTVA.','');
+        while (isNaN(prixHTVA));
+    
+        while(isNaN(nbArticles = window.prompt('Veuillez entrer le nombre d\'articles.','')));
+    
+        //Traitement des données
+        prixTTC = prixHTVA * (1 + tauxTVA) * nbArticles;
+    
+        //Affichage du résultat
+        document.write('<p>Le prix TTC est de '+ prixTTC +' &euro;</p>');
+    
+    } while(window.prompt('Voulez-vous recommencer? Si oui, tapez \'o\'.','') == 'o');
+    
+</script>
