@@ -14,20 +14,18 @@
 
     //Déclaration des variables
     var nb, borneInf, borneSup;
-    borneInf = parseInt(borneInf >= 0);
-    borneSup = parseInt(borneSup >= 0);
 
     //Affichage 
 
     do {
         borneInf = prompt('Veuillez entrer votre borne inférieure');
-        alert('Votre borne inferieur est ' + borneInf + ' ');
-    } while (isNaN(borneInf));
+        alert('Votre borne inferieur est de ' + borneInf + ' ');
+    } while (isNaN(borneInf) || borneInf < 0);
 
     do {
         borneSup = prompt('Veuillez entrer votre borne supérieure');
-        alert('Votre borne inferieur est ' + borneSup + ' ');
-    } while (isNaN(borneSup));
+        alert('Votre borne supérieure est de ' + borneSup + ' ');
+    } while (isNaN(borneSup) || borneSup > 0);
 
     do {
         nb = prompt('Veuillez entrer votre nombre');
