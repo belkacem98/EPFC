@@ -1,0 +1,28 @@
+<script>
+    /*
+    *
+    * Programme qui fait la somme d'une série d'entiers
+    * entrés un a un par l'utilisateur
+    * Condition permetant d'arreter le traitement
+    * Avant de quitter le programme afficher le résultat
+    *
+    * @author z. Belkacem <z.belkacem@hotmail.com
+    * @version 1.0
+    */
+
+    //Déclaration des variables
+    var nb, somme;
+    nb = 0
+
+    do {
+        nb = parseInt(prompt('Veuillez entrer un nombre'));
+        somme = nb;
+    } while (isNaN(nb));
+
+
+    do {
+        nb += parseInt(prompt('Voulez-vous ajouter un autre nombre?'));\
+        alert('La somme actuel est de ' + nb + '')
+    } while (confirm('Voulez vous arreter?'));
+    document.write('<p>La somme est de ' + nb + '</p>');
+</script>
