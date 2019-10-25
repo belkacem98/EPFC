@@ -1,0 +1,31 @@
+<script>
+    /**
+    * Ajusteur manuel
+    *
+    * @author B. Zeddour Brahim <z.belkacem@hotmail.com
+    * @version 1.0
+   */
+
+    //Déclaration des variables
+    var initiale, ecart;
+    const cible = 12;
+
+    //Traitement des données
+
+    initiale = Math.round(Math.random(initiale < cible) * cible);
+
+    //Affichage des données
+    document.write('VI: ' + initiale + ' - VC: ' + cible + ' ');
+    document.write("<br/>");
+    while (cible != initiale) {
+
+        //Demander à l'utilisateur
+        if (confirm('Voulez-vous ajuster l\'écart')) {
+            ecart = initiale - cible;
+            document.write('L\'écart est de ' + ecart + '');
+            do {
+                nb = prompt("Entrez un nombre entier postif inférieur à l\'écart");
+            } while (isNaN(nb) || nb < 0 || nb >= ecart || nb != parseInt(nb));
+        }
+    }
+</script>
