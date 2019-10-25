@@ -1,0 +1,38 @@
+<script>
+    /*
+    * Programme qui affiche le montant de la prime d'un vendeur
+    * 0-500 => 2%
+    * 501-1000 => 5%
+    * plus de 1000 => 10%
+    *
+    * @author B. Zeddour Brahim <z.belkacem@hotmail.com
+    * @version 1.0
+    */
+
+    // Déclaration des variables
+    var prixBase, prixTotal;
+    var b;
+    var c;
+    var d;
+
+    // Lecture des données
+    prixBase = parseFloat(prompt('Veuillez entrer votre montant pour afficher votre prime'));
+    b = 2 / 100 * prixBase;
+    c = 5 / 100 * prixBase;
+    d = 10 / 100 * prixBase;
+    // Traitement des données
+    if (prixBase <= 500) {  // Montant entre 0 et 500
+        prixTotal = b
+    } else {
+        if (prixBase <= 1000) {  // Montant entre 501 et 1000
+            prixTotal = c;
+        } else {
+            if (prixBase >= 1001) { // Montant supérieur a 1000
+                prixTotal = d;
+            }
+        }
+    }
+    // Affichage du résultat
+    document.write('<p>Le montant s\'élève à ' + prixTotal + ' €.</p>');
+
+</script>
