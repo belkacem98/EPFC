@@ -25,7 +25,7 @@
     do {
         borneSup = prompt('Veuillez entrer votre borne supérieure');
         alert('Votre borne supérieure est de ' + borneSup + ' ');
-    } while (isNaN(borneSup) || borneSup > 0);
+    } while (isNaN(borneSup) || borneSup < 0 || borneInf > borneSup);
 
     do {
         nb = prompt('Veuillez entrer votre nombre');
