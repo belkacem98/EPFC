@@ -1,0 +1,31 @@
+<script>
+/**
+ * Le Devin: programme qui permet à l'utilisateur
+ * de deviner un nombre compris entre 0 et 10.
+ * Le nombre est un entier généré aléatoirement.
+ * L'utilisateur a droit à une seule tentative.
+ *
+ * @author C.Ruth
+ * @version 1.0
+ */
+ 
+//Déclaration des variables, constantes et fonctions
+var nbHazard, nbChoisi;
+const MIN = 0;
+const MAX = 10;
+
+//Générer le nombre aléatoire nbHazard compris entre MIN et MAX
+nbHazard = Math.round(Math.random() * MAX);
+
+//Demander à l'utilisateur nbChoisi
+do {
+	nbChoisi = parseInt(prompt('Votre nombre?'));
+} while(isNaN(nbChoisi));
+
+//Vérifier que nbChoisi est égal nbHazard
+if(nbChoisi==nbHazard) {	//sI OUI, afficher 'Bravo'
+	document.write('<p style="color:green">Bravo!</p>');
+} else {	//sI NON, afficher 'Perdu'
+	document.write('<p style="color:red">Perdu!</p>');	
+}
+</script>
