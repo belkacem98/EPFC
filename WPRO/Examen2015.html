@@ -1,0 +1,48 @@
+<script>
+    //Delcaration des variables
+    var acideVeille;
+    var typePH;
+    var acideJour;
+    var varia;
+    var typeAffc = false;
+    //Lecture des données
+    do {
+
+        do {
+            acideVeille = parseFloat(prompt('Quel était le PH d\'hier?'));
+        } while (isNaN(acideVeille) || acideVeille < 0 || acideVeille > 14);
+
+        do {
+            acideJour = parseFloat(prompt('Quel est le PH d\'aujourd\'hui?'));
+        } while (isNaN(acideJour) || acideJour < 0 || acideJour > 14);
+
+        typePH = confirm('Voulez-vous afficher le type de Ph du jour?');
+
+        //Calcul et traitement des données
+        varia = (acideJour - acideVeille) / acideVeille * 100;
+
+        if (typePH) {
+            if (acideJour < 5) { //si
+                typePH = 'Acide';
+            } else if (acideJour > 10) { // ou sinon
+                typePH = 'Alcalin';
+            } else {  // le reste
+                typePH = 'Neutre';
+            }
+        }
+
+        if (typeAffc) {
+            document.write('<p>Le PH de la veille est de: ' + acideVeille + '</p>');
+            document.write('<p>Le PH du jour est de: ' + acideJour + '</p>');
+        } else {
+            document.write('<p>Le PH de la veille est de: ' + acideVeille + '</p>');
+            document.write('<p>Le PH du jour est de: ' + acideJour + '</p>');
+            document.write('<p>La variation en pourcentage est de: ' + varia + '%</p>');
+        }
+
+        
+
+
+
+    } while (confirm('Voulez-vous recommencer?'));
+</script>
