@@ -1,0 +1,41 @@
+<script>
+    /*
+    * calcule et affiche la différence d'âge d'un couple
+    * afficher au terme du traitement une valeur strictement positive.
+    * Le programme doit pouvoir se relancer et ne pourra s’arrêter que lorsque l’utilisateur le signifiera.
+    * 
+    * @author Z. Belkacem <z.belkacem@hotmail.com>
+    * @version 1.0
+    */
+
+    //Declaration des variables
+    var ageA, ageB;
+
+    //Affichage et traitement
+    do { // Boucle pour demander si l'utilisateur veut recommencer
+
+        do {
+            ageA = parseInt(prompt('Votre âge?'));
+        } while (isNaN(ageA > 0));
+        console.log(ageA); //Utilisation de console.log pour verifier les variables dans la console
+
+        do {
+            ageB = parseInt(prompt('L\'âge de votre partenaire?'));
+        } while (isNaN(ageB > 0));
+        console.log(ageB);
+
+        // Déclaration de la variable difference et utilisaton de Math.abs pour obtenir la valeure absolue
+        var difference = Math.abs(ageA - ageB)
+        console.log(difference);
+
+        if (difference != 0) {
+            document.write('<p>Entre ' + ageA + ' et ' + ageB + ' => ' + difference + ' ans d\'écart</p>');
+        } else { //Si pas de difference d'age
+            document.write('<p>Entre ' + ageA + ' et ' + ageB + ' => Pas de différence d\'âge ');
+        }
+
+    } while (confirm('Voulez-vous recommencer?'));
+
+</script>
+
+</html>
