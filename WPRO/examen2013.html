@@ -1,3 +1,6 @@
+<html>
+<meta charset="UTF-8" />
+
 <script>
     /*
     * calcule et affiche la différence d'âge d'un couple
@@ -16,12 +19,12 @@
 
         do {
             ageA = parseInt(prompt('Votre âge?'));
-        } while (isNaN(ageA > 0));
+        } while (isNaN(ageA) || (ageA<0));
         console.log(ageA); //Utilisation de console.log pour verifier les variables dans la console
 
         do {
             ageB = parseInt(prompt('L\'âge de votre partenaire?'));
-        } while (isNaN(ageB > 0));
+        } while (isNaN(ageB) || (ageB<0));
         console.log(ageB);
 
         // Déclaration de la variable difference et utilisaton de Math.abs pour obtenir la valeure absolue
