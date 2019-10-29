@@ -1,0 +1,37 @@
+<script>
+    /*
+    * Programme qui convertit une température 
+    * Fahrenheit to celcius et vice versa
+    * la température, un nombre réel compris entre -9999 et 9999
+    * puis l'unité de mesure correspondante en tapant C ou F en majuscule
+    *
+    * @author Z. Belkacem <z.belkacem@hotmail.com>
+    * @version 1.0
+    */
+
+    //Declaration des variables
+    var celcius, fahrenheit, temp,choix;
+
+    //Affichage et traitement
+    do { // Boucle pour demander si l'utilisateur veut recommencer
+
+        do {
+            temp = prompt('Quel est la température ?');
+        } while (isNaN(temp) || temp < -9999 || temp > 9999);
+
+        do {
+            choix = prompt('Taper F pour Fahrenheit ou C pour Celcius');
+        } while (!isNaN(choix));
+
+        if (choix == 'F') {
+            celcius = ((temp - 32) * 5) / 9;
+            document.write('<p>' + temp + ' °F correspond à ' + celcius + ' °C.</p>');
+
+        } else if (choix == 'C') {
+            fahrenheit = ((temp * 9) / 5) + 32;
+            document.write('<p>' + temp + ' °C correspond à ' + fahrenheit + ' °F.</p>');
+        }
+
+    } while (confirm('Voulez-vous recommencer?'));
+
+</script>
