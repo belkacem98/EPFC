@@ -1,0 +1,70 @@
+<script>
+	/*
+	* L'utilisateur entrera un par un au clavier le nombre de nuits du séjour
+	* Il devra ensuite indiquer s'il désire réserver la chambre principale pour 1 ou 2 personnes
+	* Il devra indiquer s'il désire réserver la seconde chambre
+	* il devra préciser si elle est destinée  à un adulte ou à un enfant.
+	* Il n'est pas permis de réserver la seconde chambre sans la principale.
+	* Le programme doit pouvoir se relancer et ne pourra s’arrêter que lorsque l’utilisateur le signifiera.
+	*
+	* author Z. Belkacem <z.belkacem@hotmail.com>
+	* version 1.0
+	*/
+
+	// Déclarations des variables
+	var nuits, chambrePrincipale, secondeChambre, type, prix, personnes;
+	do {  // Boucle pour demander si l'utilisateur veut recommencer
+
+		do {
+			nuits = parseInt(prompt('Combien de nuits voulez-vous rester ?'));
+		} while (isNaN(nuits));
+
+		do {
+			chambrePrincipale = parseInt(prompt('Voulez vous reserver la chambre principale pour 1 ou 2 adultes ?'));
+		} while (isNaN(chambrePrincipale) || chambrePrincipale < 1 || chambrePrincipale > 2);
+
+		do {
+			secondeChambre = prompt('Voulez vous reserver la seconde chambre ?');
+		} while (!isNaN(secondeChambre) || (!isNaN(type)));
+
+		do {
+			personnes = parseInt(prompt('Combien de personnes y-aura-t-il dans la seconde chambre ?'));
+		} while (isNaN(personnes));
+
+		do {
+			type = prompt('La chambre est destinée a un enfant ou a un adulte ?');
+		} while (!isNaN(type));
+
+		if (secondeChambre == 'non') {
+			personnes = 0;
+			prix = ((nuits * 90));
+			document.write('<p>Réservation: ' + nuits + ' nuits</p>');
+			document.write('<p> - Chambre 1: ' + chambrePrincipale + ' adultes</p>');
+			document.write('<p> - Chambre 2: ' + personnes + ' ' + type + '</p>');
+			document.write('<p> => ' + prix + ' €</p>');
+
+		} else if (chambrePrincipale == 1) {
+			document.write('<p>Réservation: ' + nuits + ' nuits</p>');
+			document.write('<p> - Chambre 1: ' + chambrePrincipale + ' adultes</p>');
+			document.write('<p> - Chambre 2: ' + personnes + ' ' + type + '</p>');
+			if (type == 'adulte') {
+				prix = ((nuits * 90) + (personnes * 50));
+			} else if (type == 'enfant') {
+				prix = ((nuits * 90) + (personnes * 25));
+			}
+			document.write('<p> => ' + prix + ' €</p>');
+
+		} else if (chambrePrincipale > 1) {
+			document.write('<p>Réservation: ' + nuits + ' nuits</p>');
+			document.write('<p> - Chambre 1: ' + chambrePrincipale + ' adultes</p>');
+			document.write('<p> - Chambre 2: ' + personnes + ' ' + type + '</p>');
+			if (type == 'adulte') {
+				prix = ((nuits * 100) + (personnes * 50));
+			} else if (type == 'enfant') {
+				prix = ((nuits * 100) + (personnes * 25));
+			}
+			document.write('<p> => ' + prix + ' €</p>');
+		}
+
+	} while (confirm('Voulez-vous recommencer?'));
+</script>
