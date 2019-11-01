@@ -1,0 +1,58 @@
+<script>
+	/*
+	* L'utilisateur entrera un par un au clavier son prénom, sa taille, son âge et sa morphologie
+	* En fonction de la morphologie il faudra appliquer la bonne formule pour calculer le poids idéal théorique.
+	* afficher au terme du traitement le poids idéal théorique
+	* si l'internaute est en surpoids ou non.
+	*
+	* author Z. Belkacem <z.belkacem@hotmail.com>
+	* version 1.0
+	*/
+
+	// Déclarations des variables
+	var prenom, age, taille, poids, morphologie;
+
+	do {  // Boucle pour demander si l'utilisateur veut recommencer
+
+		do {
+			prenom = prompt('Quel est votre prenom?');
+		} while (!isNaN(prenom));
+
+		do {
+			taille = prompt('Quel est votre taille en CM?');
+		} while (isNaN(taille) || taille < 0);
+
+		do {
+			age = prompt('Quel est votre age?');
+		} while (isNaN(age) || age < 0);
+
+		do {
+			morphologie = prompt('Quel est votre morphologie ? fine,normale ou large');
+		} while (!isNaN(morphologie));
+
+		switch (morphologie) {
+			case "normale":
+				// [Taille (en cm) - 100 + Age (en années) / 10] * 0,9.
+				poids = ((taille - 100 + age / 10) * 0.9);
+				break;
+
+			case "fine":
+				// [Taille (en cm) - 100 + Age (en années) / 10] * 0,9 * 0,9.
+				poids = ((taille - 100 + age / 10) * 0.9 * 0.9);
+				break;
+
+			case "large":
+				// = [Taille (en cm) - 100 + Age (en années) / 10] * 0,9 * 1,1.
+				poids = ((taille - 100 + age / 10) * 0.9 * 1.1);
+				break;
+
+			default:
+				alert('Veuillez choisir votre morphologie (normale,fine,large) recommencez svp');
+				break;
+		}
+
+
+		document.write('<p>' + prenom + ', votre poids idéal est ' + poids + '</p>')
+
+	} while (confirm('Voulez-vous recommencer?'));
+</script>
