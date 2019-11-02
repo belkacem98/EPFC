@@ -17,7 +17,7 @@
 	detail = false;
 	const participation = 25;
 	const codeFormationAccess = "1050";
-	const titreFormationAccess = "Acces";
+	const titreFormationAccess = "Access";
 	const periodeFormationAccess = "40";
 
 	const codeFormationExcel = "1060";
@@ -71,7 +71,7 @@
 
 		prix = (periode * 0.35);
 
-		if (ressortissant) {
+		if (!ressortissant) {
 			prixRessort = (periode * 0.75);
 			if (prixRessort > 238) {
 				prixRessort = 238;
