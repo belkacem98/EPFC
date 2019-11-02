@@ -1,0 +1,102 @@
+<script>
+	/*
+	* L'utilisateur entrera au clavier le numéro de la formation choisie parmi une liste prédéfinie 
+	* Il indiquera ensuite s’il est ressortissant d’un pays hors Union européenne ou non 
+	* et s’il est un membre du personnel
+	* Il devra ensuite indiquer s'il désire afficher le détail du tarif calculé ou seulement le total.
+	* traitement le prix total de la formation et + detail(participation, droit d’inscription et droit d’inscription spécifique).
+	*
+	* author Z. Belkacem <z.belkacem@hotmail.com>
+	* version 1.0
+	*/
+
+	// Déclarations des variables
+	var formation, ressortissant, membrePersonnel, prix, prixRessort, detail, num, periode, minerval;
+	ressortissant = false;
+	membrePersonnel = false;
+	detail = false;
+	const participation = 25;
+	const codeFormationAccess = "1050";
+	const titreFormationAcces = "Acces";
+	const periodeFormationAccess = "40";
+
+	const codeFormationExcel = "1060";
+	const titreFormationExcel = "Excel";
+	const periodeFormationExcel = "40";
+
+	const codeFormationExcelAv = "1065";
+	const titreFormationExcelAv = "Excel_avancé";
+	const periodeFormationExcelAv = "60";
+
+	const codeFormationJoomla = "3040";
+	const titreFormationJoomla = "Joomla";
+	const periodeFormationJoomla = "80";
+
+	do {  // Boucle pour demander si l'utilisateur veut recommencer
+
+		do {
+			num = prompt('Veuillez choisir le numéro de formation choisie');
+		} while (isNaN(num));
+
+		switch (num) {
+			case "1050":
+				periode = codeFormationAccess;
+				formation = titreFormationAcces;
+				break;
+
+			case "1060":
+				periode = codeFormationExcel;
+				formation = titreFormationExcel
+				break;
+
+			case "1065":
+				periode = codeFormationExcelAv;
+				formation = titreFormationExcelAv
+				break;
+
+			case "3040":
+				periode = codeFormationJoomla;
+				formation = titreFormationJoomla;
+				break;
+			default:
+				alert('Veuillez entrer un numero de formation correct svp');
+				break;
+		}
+
+		ressortissant = confirm('Etes vous un ressortissant d\'un pays hors UE ?');
+
+		membrePersonnel = confirm('Etes vous un membre du personnel ?');
+
+		detail = confirm('Voulez-vous voir les details du prix ?');
+
+		prix = periode * 0.35;
+
+		if (ressortissant = true) {
+			prixRessort = periode * 0.75;
+			if (prixRessort > 238) {
+				prixRessort = 238;
+			}
+		} else {
+			prixRessort = 0;
+		}
+
+		if (membrePersonnel = true) {
+			minerval = prix + prixRessort;
+		} else {
+			minerval = participation + prix + prixRessort;
+		}
+
+		if (detail = false) {
+			document.write('<p>Formation: ' + formation + '</p>');
+			document.write('<p>Tarif: ' + minerval + '</p>');
+		} else if (detail = true) {
+			document.write('<p>Formation: ' + formation + '</p>');
+			document.write('<p>Tarif: ' + minerval + '</p>');
+			document.write('<p> - Participation: ' + participation + '</p>');
+			document.write('<p> - Inscription: ' + prix + '</p>');
+			document.write('<p> - Frais Hors E.U. :  ' + prixRessort + '</p>');
+		}
+		document.write('<p>Code de formation inconnu </p>')
+
+	} while (confirm('Voulez-vous recommencer?'));
+</script>
