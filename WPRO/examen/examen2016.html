@@ -17,7 +17,7 @@
 	detail = false;
 	const participation = 25;
 	const codeFormationAccess = "1050";
-	const titreFormationAcces = "Acces";
+	const titreFormationAccess = "Acces";
 	const periodeFormationAccess = "40";
 
 	const codeFormationExcel = "1060";
@@ -40,22 +40,22 @@
 
 		switch (num) {
 			case "1050":
-				periode = codeFormationAccess;
-				formation = titreFormationAcces;
+				periode = periodeFormationAccess;
+				formation = titreFormationAccess;
 				break;
 
 			case "1060":
-				periode = codeFormationExcel;
+				periode = periodeFormationExcel;
 				formation = titreFormationExcel
 				break;
 
 			case "1065":
-				periode = codeFormationExcelAv;
+				periode = periodeFormationExcelAv;
 				formation = titreFormationExcelAv
 				break;
 
 			case "3040":
-				periode = codeFormationJoomla;
+				periode = periodeFormationJoomla;
 				formation = titreFormationJoomla;
 				break;
 			default:
@@ -69,10 +69,10 @@
 
 		detail = confirm('Voulez-vous voir les details du prix ?');
 
-		prix = periode * 0.35;
+		prix = (periode * 0.35);
 
-		if (ressortissant = true) {
-			prixRessort = periode * 0.75;
+		if (ressortissant) {
+			prixRessort = (periode * 0.75);
 			if (prixRessort > 238) {
 				prixRessort = 238;
 			}
@@ -80,23 +80,22 @@
 			prixRessort = 0;
 		}
 
-		if (membrePersonnel = true) {
-			minerval = prix + prixRessort;
+		if (membrePersonnel) {
+			minerval = (prix + prixRessort);
 		} else {
-			minerval = participation + prix + prixRessort;
+			minerval = (participation + prix + prixRessort);
 		}
 
-		if (detail = false) {
+		if (!detail) {
 			document.write('<p>Formation: ' + formation + '</p>');
-			document.write('<p>Tarif: ' + minerval + '</p>');
-		} else if (detail = true) {
+			document.write('<p>Tarif: ' + minerval + '€</p>');
+		} else if (detail) {
 			document.write('<p>Formation: ' + formation + '</p>');
-			document.write('<p>Tarif: ' + minerval + '</p>');
-			document.write('<p> - Participation: ' + participation + '</p>');
-			document.write('<p> - Inscription: ' + prix + '</p>');
-			document.write('<p> - Frais Hors E.U. :  ' + prixRessort + '</p>');
+			document.write('<p>Tarif: ' + minerval + ' €</p>');
+			document.write('<p> - Participation: ' + participation + '€</p>');
+			document.write('<p> - Inscription: ' + prix + '€</p>');
+			document.write('<p> - Frais Hors E.U. :  ' + prixRessort + '€</p>');
 		}
-		document.write('<p>Code de formation inconnu </p>')
 
 	} while (confirm('Voulez-vous recommencer?'));
 </script>
