@@ -11,10 +11,8 @@
 	*/
 
 	// Déclarations des variables
-	var longueurCarreau, largeurCarreau, nbPaquets, detail, surface, surfaceTotal, dechet;
+	var longueurCarreau, largeurCarreau, nbPaquets, detail, surface, surfaceTotal, perte, dechet, carreauxPerdus;
 	detail = false;
-	const dechetMoins = (2 / 100);
-	const dechetPlus = (5 / 100);
 
 	do {  // Boucle pour demander si l'utilisateur veut recommencer
 
@@ -35,12 +33,16 @@
 		surface = ((longueurCarreau * largeurCarreau) * (nbPaquets * 50));  //Cm2
 
 		if (surface > 20000) {
-			dechetPlus
+			dechet = 0.05;
 		} else {
-			dechetMoins
+			dechet = 0.02;
 		}
 
-		
+		//Calcul du nombre de carreaux perdus
+		perte = 50 - (50 * dechet);
+		carreauxPerdus = 50 - perte;
+
+
 
 
 		surface = surface / 10000; //m2
@@ -52,7 +54,7 @@
 			document.write('<p>Nb paquets: ' + nbPaquets + ' </p>');
 			document.write('<p>Dimensions: ' + longueurCarreau + 'x' + largeurCarreau + ' </p>');
 			document.write('<p>Surface:  ' + surface + ' m²</p>');
-			document.write('<p>Dechet:  ' + dechet + ' m²</p>');
+			document.write('<p>Déchet: ' + (carreauxPerdus * nbPaquets) + ' carreaux (' + (carreauxPerdus) + '%)</p>')
 			document.write('<p>==> Surface totale: ' + dechet + ' m²</p>');
 		}
 
