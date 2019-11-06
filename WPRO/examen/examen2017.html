@@ -1,0 +1,85 @@
+<script>
+	/*
+	* l'utilisateur entrera au clavier le code du concert choisi parmi une liste prédéfinie
+	* Il indiquera ensuite la quantité de ticket désirée pour ce concert.
+	*
+	* L’utilisateur doit pouvoir ensuite recommencer la phase de sélection 
+	* Cette phase de sélection doit pouvoir s’arrêter lorsque l’utilisateur le signifiera.
+	* Il devra ensuite indiquer s'il désire afficher le détail du montant calculé ou seulement le total.
+	*
+	* author Z. Belkacem <z.belkacem@hotmail.com>
+	* version 1.0
+	*/
+
+	// Déclarations des variables
+	var nbTickets,
+		concert,
+		nbticketsChristophe = 0,
+		nbticketsGarland = 0,
+		nbticketsJambinai = 0,
+		total;
+	var detail = false;  //Initialisation de la variable detail a "false", pour la confirmation
+
+	//Déclarations des constantes 
+	const PRIX_CONCERT_GARLAND = 26;
+	const NOM_CONCERT_GARLAND = "Garland Jeffreys";
+
+	const PRIX_CONCERT_CHRISTOPHE = 50;
+	const NOM_CONCERT_CHRISTOPHE = "Christophe";
+
+	const PRIX_CONCERT_JAMBINAI = 15;
+	const NOM_CONCERT_JAMBINAI = "Jambinai";
+
+
+	do {  // Boucle pour demander a l'utilisateur s'il veut ajouter des concerts
+		do {
+			concert = parseInt(prompt('Entrer le bon code suivant le concert choisis (Garland Jeffreys: Code 100),(Christophe: Code 20),(Jambinai: Code 3)'));
+		} while (isNaN(concert) || concert < 0);
+
+		//Création d'un switch case pour trouver facilement le concert avec le bon code(100,20,3)
+		switch (concert) {
+			case 100:
+				do {
+					nbticketsGarland += parseInt(prompt('Combien de tickets pour ce concert ?'));
+				} while (isNaN(nbticketsGarland) || nbticketsGarland < 0);
+				break;
+
+			case 20:
+				do {
+					nbticketsChristophe += parseInt(prompt('Combien de tickets pour ce concert ?'));
+				} while (isNaN(nbticketsChristophe) || nbticketsChristophe < 0);
+				break;
+
+			case 3:
+				do {
+					nbticketsJambinai += parseInt(prompt('Combien de tickets pour ce concert ?'));
+				} while (isNaN(nbticketsJambinai) || nbticketsJambinai < 0);
+				break;
+			default:
+				alert('Aucune sélection !') //S'il ne choisit pas entre les cases (100,20,3)
+		}
+		//Calcul du prix
+		total = (PRIX_CONCERT_GARLAND * nbticketsGarland) + (PRIX_CONCERT_CHRISTOPHE * nbticketsChristophe) + (PRIX_CONCERT_JAMBINAI * nbticketsJambinai);
+
+	} while (confirm('Voulez-vous ajouter d\'autres concerts ?'));
+
+	//Demande d'affichage des détails du prix
+	detail = confirm('Voulez-vous le détail de ce montant ?');
+
+	//Affichage du résultat
+	if (!detail) { //S'il ne veut pas les détails du prix en cliquant sur annuler ligne 67
+		document.write('<p>Total: ' + total + ' €</p>');
+	} else { //S'il veut les détails en confirmant la boite de dialogue ligne 67
+		document.write('<p>Votre sélection:</p>');
+		if (nbticketsGarland != 0) {
+			document.write('<p>-   ' + nbticketsGarland + ' x ' + NOM_CONCERT_GARLAND + '  (' + PRIX_CONCERT_GARLAND + ' €)</p>');
+		}
+		if (nbticketsChristophe != 0) {
+			document.write('<p>-   ' + nbticketsChristophe + ' x ' + NOM_CONCERT_CHRISTOPHE + '  (' + PRIX_CONCERT_CHRISTOPHE + ' €)</p>');
+		}
+		if (nbticketsJambinai != 0) {
+			document.write('<p>-   ' + nbticketsJambinai + ' x ' + NOM_CONCERT_JAMBINAI + '  (' + PRIX_CONCERT_JAMBINAI + ' €)</p>');
+		}
+		document.write('<p>Total: ' + total + ' €</p>');
+	}
+</script>
