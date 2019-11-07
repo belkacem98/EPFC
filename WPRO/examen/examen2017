@@ -1,0 +1,95 @@
+<script>
+    /*
+    * L'utilisateur entre au clavier la quantité de séances désirée
+    * Pour une quantité d’au moins 5 séances, le programme lui affiche qu’il a droit à la réduction de 15%.
+    * 
+    * le programme lui affiche qu’il a droit à la réduction de 15%
+    * Si l’utilisateur refuse, le programme calcule le montant total en appliquant une éventuelle réduction de 15%.
+    * Dans le cas contraire, l’utilisateur entre son code promo,
+    * 
+    * puis le programme calcule le montant total en appliquant le pourcentage associé au code promo entré.
+    * Le programme doit pouvoir se relancer et ne pourra s’arrêter que lorsque l’utilisateur le signifiera.
+    *
+    * author Z. Belkacem <z.belkacem@hotmail.com>
+    * version 0.1
+    */
+
+    //Déclaration des variables
+    var nbSeances,
+        codePromo,
+        montantTotal,
+        prix,
+        quantite,
+        code;
+    var codePromoConf = false;
+    var reduction = false;
+
+    const PRIX_COACHING = 10;
+
+    do {
+
+        do {
+            nbSeances = parseInt(prompt('Combien de séances désirez-vous ?'));
+        } while (nbSeances < 0 || isNaN(nbSeances));
+
+        if (nbSeances >= 5) {
+            reduction = confirm('Vous avez une réduction de 15%')
+        }
+
+        codePromoConf = confirm('Avez-vous un code promo ?');
+        if (codePromoConf) {
+            do {
+                codePromo = (prompt('Quel est votre code promo ?'));
+            } while (!isNaN(codePromo));
+        }
+        //TODO: réduction
+        switch (codePromo) {
+            case "2SpringAs1":  //15%
+                code = 0.15;
+                prix = (PRIX_COACHING * nbSeances) - ((PRIX_COACHING * nbSeances) * code);
+                break;
+
+            case "Winter4Life": //20%
+                code = 0.20;
+                prix = (PRIX_COACHING * nbSeances) - ((PRIX_COACHING * nbSeances) * code);
+                break;
+
+            case "i8Summer": //25%
+                code = 0.25;
+                prix = (PRIX_COACHING * nbSeances) - ((PRIX_COACHING * nbSeances) * code);
+                break;
+
+            case "Autumn3": //30%
+                code = 0.30;
+                prix = (PRIX_COACHING * nbSeances) - ((PRIX_COACHING * nbSeances) * code);
+                break;
+
+            default:
+                alert('Je n\'ai pas de code promo');
+        }
+
+        //Réduction 15% par quantité 5
+        quantite = ((PRIX_COACHING * nbSeances) - (PRIX_COACHING * nbSeances) * 0.15);
+        //TODO: Affichage du réslutat et calcul
+
+        if (reduction) {
+            document.write('<p>Votre réservation:</p>');
+            document.write('<p>* ' + nbSeances + ' séances</p>');
+            document.write('<p>=> Réduction -15%</p>');
+            document.write('<p>Total: ' + quantite + '€</p>');
+        } else if (codePromoConf) {
+            document.write('<p>Votre réservation:</p>');
+            document.write('<p>* ' + nbSeances + ' séances</p>');
+            document.write('<p>=> Code promo (' + code * 100 + '%)</p>');
+            document.write('<p>Total: ' + prix + '€</p>');
+        } else if (!codePromoConf) {
+            document.write('<p>Votre réservation:</p>');
+            document.write('<p>* ' + nbSeances + ' séances</p>');
+            document.write('<p>Total ' + prix + ' €</p>');
+        }
+
+
+    } while (confirm('Voulez vous recommencer ?'));
+
+
+</script>
