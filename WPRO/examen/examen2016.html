@@ -15,22 +15,22 @@
 	ressortissant = false;
 	membrePersonnel = false;
 	detail = false;
-	const participation = 25;
-	const codeFormationAccess = "1050";
-	const titreFormationAccess = "Access";
-	const periodeFormationAccess = "40";
+	const PARTICIPATION = 25;
+	const CODE_FORMATION_ACCESS = "1050";
+	const TITRE_FORMATION_ACCESS = "Access";
+	const PERIODE_FORMATION_ACCESS = "40";
 
-	const codeFormationExcel = "1060";
-	const titreFormationExcel = "Excel";
-	const periodeFormationExcel = "40";
+	const CODE_FORMATION_EXCEL = "1060";
+	const TITRE_FORMATION_EXCEL = "Excel";
+	const PERIODE_FORMATION_EXCEL = "40";
 
-	const codeFormationExcelAv = "1065";
-	const titreFormationExcelAv = "Excel_avancé";
-	const periodeFormationExcelAv = "60";
+	const CODE_FORMATION_EXCELAV = "1065";
+	const TITRE_FORMATION_EXCELAV = "Excel_avancé";
+	const PERIODE_FORMATION_EXCELAV = "60";
 
-	const codeFormationJoomla = "3040";
-	const titreFormationJoomla = "Joomla";
-	const periodeFormationJoomla = "80";
+	const CODE_FORMATION_JOOMLA = "3040";
+	const TITRE_FORMATION_JOOMLA = "Joomla";
+	const PEROIODE_FORMATION_JOOMLA = "80";
 
 	do {  // Boucle pour demander si l'utilisateur veut recommencer
 
@@ -40,23 +40,23 @@
 
 		switch (num) {
 			case "1050":
-				periode = periodeFormationAccess;
-				formation = titreFormationAccess;
+				periode = PERIODE_FORMATION_ACCESS;
+				formation = TITRE_FORMATION_ACCESS;
 				break;
 
 			case "1060":
-				periode = periodeFormationExcel;
-				formation = titreFormationExcel
+				periode = PERIODE_FORMATION_EXCEL;
+				formation = TITRE_FORMATION_EXCEL
 				break;
 
 			case "1065":
-				periode = periodeFormationExcelAv;
-				formation = titreFormationExcelAv
+				periode = PERIODE_FORMATION_EXCELAV;
+				formation = TITRE_FORMATION_EXCELAV
 				break;
 
 			case "3040":
-				periode = periodeFormationJoomla;
-				formation = titreFormationJoomla;
+				periode = PEROIODE_FORMATION_JOOMLA;
+				formation = TITRE_FORMATION_JOOMLA;
 				break;
 			default:
 				alert('Veuillez entrer un numero de formation correct svp');
@@ -83,7 +83,7 @@
 		if (membrePersonnel) {
 			minerval = (prix + prixRessort);
 		} else {
-			minerval = (participation + prix + prixRessort);
+			minerval = (PARTICIPATION + prix + prixRessort);
 		}
 
 		if (!detail) {
@@ -92,7 +92,7 @@
 		} else if (detail) {
 			document.write('<p>Formation: ' + formation + '</p>');
 			document.write('<p>Tarif: ' + minerval + ' €</p>');
-			document.write('<p> - Participation: ' + participation + '€</p>');
+			document.write('<p> - Participation: ' + PARTICIPATION + '€</p>');
 			document.write('<p> - Inscription: ' + prix + '€</p>');
 			document.write('<p> - Frais Hors E.U. :  ' + prixRessort + '€</p>');
 		}
