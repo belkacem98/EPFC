@@ -6,7 +6,7 @@
 	* si l'internaute est en surpoids ou non.
 	*
 	* @author Z. Belkacem <z.belkacem@hotmail.com>
-	* @version 1.0
+	* @version 1.2
 	*/
 
     // Déclarations des variables
@@ -19,11 +19,11 @@
 
     do {  // Boucle pour demander si l'utilisateur veut recommencer
         do {
-            prenom = prompt('Quel est votre prenom?');
+            prenom = prompt('Quel est votre prénom?');
         } while (!isNaN(prenom));
 
         do {
-            age = prompt('Quel est votre age?');
+            age = prompt('Quel est votre âge?');
         } while (isNaN(age) || age < 0);
 
         do {
@@ -56,7 +56,7 @@
                 break;
 
             default:
-                alert('Veuillez choisir votre morphologie (normale,fine,large) recommencez svp');
+                alert('Veuillez choisir votre morphologie entre (normale,fine,large) recommencez svp');
                 break;
         }
         //Affichage du résultat
