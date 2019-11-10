@@ -1,0 +1,74 @@
+<script>
+    /**
+    * l'utilisateur entre au clavier le nombre d’adultes et d’enfants
+    * Le programme calcule et affiche le montant détaillé à payer pour les couverts
+    * le programme calcule et affiche le montant à payer
+    * pour les boissons (option bulles) et demande à l’utilisateur s’il est intéressé
+    * Si oui, le programme affiche une facture détaillée
+    * L’utilisateur doit pouvoir recommencer sans devoir recharger la page
+    * il peut y avoir aucun enfant mais au moins 10 adultes
+    *
+    * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
+    * @version 0.1
+    */
+
+
+    //Déclaration des variables et constantes
+    var nbAdultes,
+        prixAdultes,
+        nbEnfants,
+        prixEnfants,
+        nbPersonnes,
+        tranchePersonnes,
+        bulles = false,
+        prixBulles,
+        total,
+        totalBulles;
+    const TARIF_ADULTES = 15;
+    const TARIF_ENFANTS = 10;
+    const OPTION_BULLES = 50;
+
+    //Traitement des données
+    do {
+        nbAdultes = parseInt(prompt('Combien d\'adultes seront présent au mariage ?'));
+    } while (nbAdultes < 10 || isNaN(nbAdultes));
+
+    do {
+        nbEnfants = parseInt(prompt('Combien d\'enfant seront présent au mariage ?'));
+    } while (nbEnfants < -1 || isNaN(nbEnfants));
+
+    //Demande a l'utilisateur s'il est interessé par l'option bulle
+    bulles = confirm('Etes-vous interesser par l\'option bulless ?');
+
+    //Calcul des differents etapes 
+    prixAdultes = nbAdultes * TARIF_ADULTES;
+    prixEnfants = nbEnfants * TARIF_ENFANTS;
+    total = prixAdultes + prixEnfants;
+    nbPersonnes = nbAdultes + nbEnfants;
+    tranchePersonnes = nbPersonnes / 10;
+    //Calcul de l'option bulles
+    prixBulles = (OPTION_BULLES * Math.round((tranchePersonnes)));
+    totalBulles = prixAdultes + prixEnfants + prixBulles;
+
+    //TODO: tranchPersonnes doit donner un chiffre rond
+
+    //Affichage du résultat
+    if (!bulles) {
+        document.write('Total: ' + prixAdultes + ' + ' + prixEnfants + ' = ' + total + ' €');
+    } else if (nbEnfants == 0) {
+        document.write('Total: ' + prixAdultes + ' + ' + prixEnfants + ' = ' + total + ' €');
+        document.write('<p></p>'); // Ligne vide
+        document.write('Facture détaillée:');
+        document.write('<li>	' + nbAdultes + ' adultes (' + prixAdultes + ' €)</li>');
+        document.write('<li>	' + tranchePersonnes + ' Bulles (' + prixBulles + ' €)</li>');
+        document.write('Total: ' + totalBulles + ' €');
+    } else {
+        document.write('Total: ' + prixAdultes + ' + ' + prixEnfants + ' = ' + total + ' €');
+        document.write('<p></p>'); // Ligne vide
+        document.write('Facture détaillée:');
+        document.write('<li>	' + nbAdultes + ' adultes (' + prixAdultes + ' €)</li>');
+        document.write('<li>	' + nbEnfants + ' enfants (' + prixEnfants + ' €)</li>');
+        document.write('<li>	' + tranchePersonnes + ' Bulles (' + prixBulles + ' €)</li>');
+        document.write('Total: ' + totalBulles + ' €');
+    }
+</script>
