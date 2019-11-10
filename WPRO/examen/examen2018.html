@@ -9,7 +9,7 @@
     * il peut y avoir aucun enfant mais au moins 10 adultes
     *
     * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
-    * @version 0.1
+    * @version 0.2
     */
 
 
@@ -35,10 +35,10 @@
 
     do {
         nbEnfants = parseInt(prompt('Combien d\'enfant seront présent au mariage ?'));
-    } while (nbEnfants < -1 || isNaN(nbEnfants));
+    } while (nbEnfants < 0 || isNaN(nbEnfants));
 
     //Demande a l'utilisateur s'il est interessé par l'option bulle
-    bulles = confirm('Etes-vous interesser par l\'option bulless ?');
+    bulles = confirm('Etes-vous interessé par l\'option bulle ?');
 
     //Calcul des differents etapes 
     prixAdultes = nbAdultes * TARIF_ADULTES;
