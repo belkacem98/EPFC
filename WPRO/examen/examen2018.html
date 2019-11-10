@@ -9,7 +9,7 @@
     * il peut y avoir aucun enfant mais au moins 10 adultes
     *
     * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
-    * @version 0.2
+    * @version 0.3
     */
 
 
@@ -38,7 +38,7 @@
     } while (nbEnfants < 0 || isNaN(nbEnfants));
 
     //Demande a l'utilisateur s'il est interessé par l'option bulle
-    bulles = confirm('Etes-vous interessé par l\'option bulle ?');
+    bulles = confirm('Etes-vous interesser par l\'option bulless ?');
 
     //Calcul des differents etapes 
     prixAdultes = nbAdultes * TARIF_ADULTES;
@@ -68,7 +68,7 @@
         document.write('Facture détaillée:');
         document.write('<li>	' + nbAdultes + ' adultes (' + prixAdultes + ' €)</li>');
         document.write('<li>	' + nbEnfants + ' enfants (' + prixEnfants + ' €)</li>');
-        document.write('<li>	' + tranchePersonnes + ' Bulles (' + prixBulles + ' €)</li>');
+        document.write('<li>	' + Math.ceil(tranchePersonnes) + ' Bulles (' + prixBulles + ' €)</li>');
         document.write('Total: ' + totalBulles + ' €');
     }
 </script>
