@@ -9,7 +9,7 @@
     * il peut y avoir aucun enfant mais au moins 10 adultes
     *
     * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
-    * @version 0.3
+    * @version 0.4
     */
 
 
@@ -58,7 +58,7 @@
         document.write('<p></p>'); // Ligne vide
         document.write('Facture détaillée:');
         document.write('<li>	' + nbAdultes + ' adultes (' + prixAdultes + ' €)</li>');
-        document.write('<li>	' + tranchePersonnes + ' Bulles (' + prixBulles + ' €)</li>');
+        document.write('<li>	' + Math.ceil(tranchePersonnes) + ' Bulles (' + prixBulles + ' €)</li>');
         document.write('Total: ' + totalBulles + ' €');
     } else {
         document.write('Total: ' + prixAdultes + ' + ' + prixEnfants + ' = ' + total + ' €');
