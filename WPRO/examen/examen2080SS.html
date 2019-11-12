@@ -1,0 +1,83 @@
+<script>
+    /**
+    * l'utilisateur entre au clavier le code du costume choisi
+    * le programme affiche le nom du costume et le prix de la location par jour.
+    * L’utilisateur entre le nombre de jours de location
+    * le programme demande si l’utilisateur désire l’option nettoyage
+    * Si oui, le programme calcule et affiche le montant détaillé à payer pour le costume et le nettoyage,
+    * Sinon le programme affiche le total de la location
+    * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
+    * @version 0.1
+    */
+
+
+    //Déclaration des variables et constantes
+    var codeCostume,
+        nbJours,
+        total,
+        nomCostume,
+        prixCostume,
+        total,
+        prixBase,
+        nettoyage = false,
+        prixDetail = false;
+    const PRIX_COSTUME_3PIECES = 85;
+    const PRIX_DEGUISEMENT_PIRATE = 70;
+    const PRIX_DEGUISEMENT_RDN = 90;
+    const PRIX_OPTION_NETTOYAGE = 20;
+    const NOM_COSTUME_3PIECES = "Costumes 3 pieces";
+    const NOM_DEGUISEMENT_PIRATE = "Déguisement de pirate";
+    const NOM_DEGUISEMENT_RDN = "Déguisement Reine des neiges";
+
+    //Traitement des données
+    do {
+        do {
+            codeCostume = prompt('Le code du costume svp');
+        } while (codeCostume.length != 3);
+
+        do {
+            nbJours = parseInt(prompt('Le nombre de jours pour la location svp ?'));
+        } while (isNaN(nbJours) || nbJours > 5);
+
+        switch (codeCostume) {
+            case "3PS":
+                nomCostume = NOM_COSTUME_3PIECES;
+                prixBase = PRIX_COSTUME_3PIECES;
+                prixCostume = PRIX_COSTUME_3PIECES * nbJours;
+                break;
+
+            case "PIR":
+                nomCostume = NOM_DEGUISEMENT_PIRATE;
+                prixBase = PRIX_DEGUISEMENT_PIRATE;
+                prixCostume = PRIX_DEGUISEMENT_PIRATE * nbJours;
+                break;
+
+            case "REI":
+                nomCostume = NOM_DEGUISEMENT_RDN;
+                prixBase = PRIX_DEGUISEMENT_RDN;
+                prixCostume = PRIX_DEGUISEMENT_RDN * nbJours;
+                break;
+
+            default:
+                alert('Le code costume est incorrect');
+                break;
+        }
+
+        alert('Vous avez choisi le costume ' + nomCostume + ' pour ' + prixCostume + ' €')
+
+        nettoyage = confirm('Voulez-vous l\'option nettoyage ?');
+        prixDetail = confirm('Voulez-vous afficher les détails ?');
+
+        if (prixDetail) {
+            if (nettoyage) {
+                total = prixCostume + PRIX_OPTION_NETTOYAGE;
+                document.write('Total:');
+                document.write('' + prixBase + ' * ' + nbJours + ' + ' + PRIX_OPTION_NETTOYAGE + '=  ' + total + '€');
+            }
+        } else {
+            total = prixCostume;
+            document.write('Total: ' + total + ' €');
+        }
+    } while (confirm('Voulez-vous recommencer ?'));
+
+</script>
