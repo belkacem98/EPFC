@@ -7,7 +7,7 @@
     * Si oui, le programme calcule et affiche le montant détaillé à payer pour le costume et le nettoyage,
     * Sinon le programme affiche le total de la location
     * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
-    * @version 0.1
+    * @version 0.2
     */
 
 
@@ -39,7 +39,7 @@
             nbJours = parseInt(prompt('Le nombre de jours pour la location svp ?'));
         } while (isNaN(nbJours) || nbJours > 5);
 
-        switch (codeCostume) {
+        switch (codeCostume.toUpperCase()) {
             case "3PS":
                 nomCostume = NOM_COSTUME_3PIECES;
                 prixBase = PRIX_COSTUME_3PIECES;
