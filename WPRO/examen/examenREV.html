@@ -1,0 +1,66 @@
+<script>
+/**
+ * examen
+ * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
+ * @version 0.1
+ */
+//Declaration des variables et des constantes
+var nbEnfants,
+	prixEnfants,
+	nbAdultes,
+	prixAdultes,
+	total,
+	optionBulles = false,
+	nbBulles,
+	prixBulles,
+	totalBulles,
+	totalPersonnes;
+const PRIX_ADliTE_COUVERT = 15;
+const PRIX_ENFANT_COUVERT = 10;
+const PRIX_OPTION_Bulles = 50;
+
+//Traitement des données
+do{ //Boucle pour demander a l'utilisateur s'il veut recommencer
+	do{
+		nbAdultes = parseInt(prompt('Combien d\'Adultes seront présent?',10));
+	} while (isNaN(nbAdultes) || nbAdultes < 10);
+	
+	do{
+		nbEnfants = parseInt(prompt('Combien d\'enfants seront présent?',0));
+	} while (isNaN(nbEnfants) || nbEnfants < 0);
+	//Calcul
+	prixAdultes = nbAdultes * PRIX_ADliTE_COUVERT;
+	prixEnfants = nbEnfants * PRIX_ENFANT_COUVERT;
+	total = prixAdultes + prixEnfants;
+	totalPersonnes = nbEnfants + nbAdultes;
+	//Calcul pour l'option Bulles
+	nbBulles = totalPersonnes /10;
+	prixBulles = Math.ceil(nbBulles) * PRIX_OPTION_Bulles;
+	totalBulles = prixAdultes + prixEnfants + prixBulles;
+	
+	//Affichage du prix sans option Bulles
+	alert('Total: '+prixAdultes+' + '+prixEnfants+' = '+total+' €')
+	//Affichage option blile avec son prix et demande a l'utilisateur s'il est interesser 
+	optionBulles = confirm('Si vous prenez l\'option Bulles vous payerez '+totalBulles+' €');
+
+	//Affichage des données
+	if (!optionBulles){
+		document.write('<p>Total: '+prixAdultes+' + '+prixEnfants+' = '+total+' €</p>');
+	} else if (optionBulles){
+		document.write('<p>Total: '+prixAdultes+' + '+prixEnfants+' = '+total+' €</p>');
+		document.write('<p></p>'); //Ligne vide
+		document.write('<p>Facture détaillée:</p>');
+		document.write('<li> '+nbAdultes+' Adultes ('+prixAdultes+' €)</li>');
+		document.write('<li> '+nbEnfants+' enfants ('+prixEnfants+' €)</li>');
+		document.write('<li> '+Math.ceil(nbBulles)+' x Bulles ('+prixBulles+' €) </li>');
+		document.write('<p> Total: '+totalBulles+' </p>');
+	} else { 
+		document.write('<p>Total: '+prixAdultes+' + '+prixEnfants+' = '+total+' €</p>');
+		document.write('<p></p>'); //Ligne vide
+		document.write('<p>Facture détaillée:</p>');
+		document.write('<li> '+nbAdultes+' Adultes ('+prixAdultes+' €)</li>');
+		document.write('<li> '+Math.ceil(nbBulles)+' x Bulles ('+prixBulles+' €) </li>');
+		document.write('<p> Total: '+totalBulles+' </p>');
+	}
+} while (confirm('Voulez-vous recommencer ?'));
+</script>
