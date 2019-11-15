@@ -1,0 +1,63 @@
+<meta charset = "UTF-8">
+<script>
+	/**
+	 * Examen Divorce : calcul des coûts
+	 * @author B. Zeddour Brahim <z.belkacem@hotmail.com>
+	 * @version 0.1
+	 */
+	//Déclaration des variables et des constantes
+	var divorceAmiable = false,  //Initialisation de divorceAmiable à false
+		partagePourcentage1 = 50, //Initialisation du pourcentage par default à 50
+		partagePourcentage2,
+		coutPartenaire1,
+		coutPartenaire2,
+		montantTotal,
+		montantTotalNonAmiable;
+		
+	const COUT_GESTION = 399;
+	const FRAIS_JUSTICE = 40;
+	const FRAIS_JUSTICE_AMIABLE = 82.50;
+	const FRAIS_JUSTICE_NON_AMIABLE = 165;
+	const FRAIS_ADMINISTRATIF = 20;
+	
+	//Traitement des données
+	do {
+		divorceAmiable = confirm("Voulez-vous un divorce à l\'amiable ?"); //Demande si l'utilisateur souhaite un divorce à l'amiable
+		
+		if (divorceAmiable){  //divorceAmiable TRUE
+			do { //Boucle pour obliger l'utilisateur à entrer un pourcentage entre 0 et 100
+				partagePourcentage1 = parseInt(prompt('Combien voulez-vous payer'));
+			} while (partagePourcentage1 < 0 || partagePourcentage1 > 100);
+			
+			if (isNaN(partagePourcentage1)) { //Par default le pourcentage est à 50
+				partagePourcentage1 = 50;
+			}
+		//Calcul des differents coûts de justice
+		partagePourcentage2 = 100 - partagePourcentage1;
+		montantTotal = COUT_GESTION+FRAIS_JUSTICE_AMIABLE+FRAIS_JUSTICE;
+		coutPartenaire1=montantTotal-(montantTotal*(partagePourcentage2/100));
+		coutPartenaire2=montantTotal-(montantTotal*(partagePourcentage1/100));
+		} else {  //divorceAmiable FALSE
+			montantTotalNonAmiable = COUT_GESTION+FRAIS_JUSTICE_NON_AMIABLE+FRAIS_ADMINISTRATIF;
+		}
+	
+	//Affichage des données
+	if (divorceAmiable) {
+		document.write('<p>Divorce à l\'amiable</p>');
+		document.write('<li>Gestion: '+COUT_GESTION+' €</li>');
+		document.write('<li>Frais de justice: '+FRAIS_JUSTICE+' €</li>');
+		document.write('<li>Frais fiscaux: '+FRAIS_JUSTICE_AMIABLE+' €</li>');
+		document.write('<p>Coût total: '+montantTotal+' €</p>');
+		document.write('<p>Répartition: '+partagePourcentage1+'/'+partagePourcentage2+'</p>');
+		document.write('<li>Partenaire 1 : '+coutPartenaire1.toFixed(2)+' €</li>');
+		document.write('<li>Partenaire 2 : '+coutPartenaire2.toFixed(2)+' €</li>');
+		} else {
+		document.write('<p>Divorce non-amiable</p>');
+		document.write('<li>Gestion: '+COUT_GESTION+' €</li>');
+		document.write('<li>Frais administratifs: '+FRAIS_ADMINISTRATIF+' €</li>');
+		document.write('<li>Frais fiscaux: '+FRAIS_JUSTICE_NON_AMIABLE+' €</li>');
+		document.write('<p>Coût total: '+montantTotalNonAmiable+' €</p>');
+		document.write('<p>* hors frais d\'huissier et de justice.</p>');
+		}
+	} while (confirm('Voulez-vous recommencer ?'));
+</script>
